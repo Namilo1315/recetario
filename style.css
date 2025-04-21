@@ -1,0 +1,257 @@
+/* General Styles */
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    font-size: 16px; /* Base font size */
+}
+
+.recipe-book {
+    max-width: 950px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 5px solid #ffd700; /* Fun yellow border */
+}
+
+h1 {
+    text-align: center;
+    color: #ff69b4; /* Hot pink title */
+    background-color: #fffacd; /* Lemon chiffon background for title */
+    padding: 15px 0;
+    margin: 0;
+    border-bottom: 3px dashed #ff69b4;
+    font-size: 2em; /* Adjusted font size */
+}
+
+h2 {
+    color: #4682b4; /* Steel blue recipe title */
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.8em; /* Adjusted font size */
+}
+
+h3 {
+    color: #32cd32; /* Lime green section titles */
+    border-bottom: 2px solid #90ee90; /* Light green underline */
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 1.5em; /* Adjusted font size */
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    background-color: #e0ffff; /* Light cyan tab background */
+    padding: 10px 0;
+    border-bottom: 2px solid #afeeee; /* Pale turquoise border */
+}
+
+.tab-button {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #87cefa; /* Light sky blue border */
+    border-radius: 20px;
+    padding: 8px 15px; /* Reduced padding */
+    margin: 0 8px; /* Reduced margin */
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+    font-size: 1em; /* Adjusted font size */
+    color: #4682b4;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    font-weight: bold;
+}
+
+.tab-button svg {
+    margin-right: 6px; /* Reduced margin */
+    width: 20px; /* Smaller tab icons */
+    height: 20px;
+}
+
+.tab-button:hover {
+    background-color: #add8e6; /* Light blue hover */
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.tab-button.active {
+    background-color: #4682b4; /* Steel blue active */
+    color: #fff;
+    border-color: #4682b4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Recipe Content */
+#recipe-content {
+    padding: 20px;
+}
+
+.recipe {
+    display: none; /* Hide recipes by default */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.recipe.active {
+    display: block; /* Show active recipe */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+/* Ingredients & Preparation Layout */
+.items, .steps {
+    display: grid;
+    /* Adjust columns based on screen size */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive grid */
+    gap: 15px; /* Spacing between items */
+    text-align: center;
+}
+
+/* Item and Step Styling */
+.item, .step {
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 10px; /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    min-height: 120px; /* Ensure consistent height */
+    justify-content: space-between; /* Distribute space */
+}
+
+.item:hover, .step:hover {
+    background-color: #eef;
+    transform: scale(1.03);
+}
+
+.item span, .step span:last-of-type { /* Target the text span */
+    margin-top: 8px; /* Space between icon and text */
+    font-size: 0.9em; /* Adjusted font size */
+    color: #555;
+    font-weight: bold;
+    flex-grow: 1; /* Allow text to take available space */
+    display: flex;
+    align-items: center; /* Center text vertically if needed */
+    justify-content: center; /* Center text horizontally */
+}
+
+.icon {
+    width: 60px; /* Reduced icon size */
+    height: 60px; /* Reduced icon size */
+    display: block;
+    margin: 0 auto 5px auto; /* Center icon and add bottom margin */
+}
+
+/* Step Number */
+.step .number {
+    font-weight: bold;
+    background-color: #ffb6c1; /* Light pink circle */
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px; /* Space below number */
+    font-size: 0.9em; /* Adjusted font size */
+    position: absolute; /* Position relative to parent */
+    top: 5px;
+    left: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.step {
+    position: relative; /* Needed for absolute positioning of number */
+    padding-top: 35px; /* Make space for the number */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        font-size: 14px; /* Slightly smaller base font size */
+    }
+
+    .recipe-book {
+        margin: 10px auto;
+        border-width: 3px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        padding: 10px 0;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    .tabs {
+        flex-wrap: wrap; /* Allow tabs to wrap */
+        padding: 5px 0;
+    }
+
+    .tab-button {
+        padding: 6px 10px;
+        margin: 3px 4px;
+        font-size: 0.9em;
+    }
+
+    .tab-button svg {
+        width: 18px;
+        height: 18px;
+        margin-right: 4px;
+    }
+
+    .items, .steps {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .item, .step {
+        padding: 8px;
+        min-height: 100px;
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .item span, .step span:last-of-type {
+        font-size: 0.8em;
+    }
+
+    .step .number {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8em;
+        top: 3px;
+        left: 3px;
+    }
+
+    .step {
+        padding-top: 30px;
+    }
+}
