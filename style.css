@@ -9,7 +9,7 @@ body {
 }
 
 .recipe-book {
-    max-width: 950px;
+    max-width: 1500px;
     margin: 20px auto;
     background-color: #fff;
     border-radius: 15px;
@@ -30,10 +30,11 @@ h1 {
 
 h2 {
     color: #4682b4; /* Steel blue recipe title */
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 0; /* Reset margin */
+    margin-bottom: 0; /* Reset margin */
+    margin-right: 20px; /* Space between title and image */
     font-size: 1.8em; /* Adjusted font size */
+    flex-grow: 1; /* Allow title to take space */
 }
 
 h3 {
@@ -102,13 +103,30 @@ h3 {
     display: block; /* Show active recipe */
 }
 
+/* New container for title and image */
+.title-image-container {
+    display: flex;
+    align-items: center; /* Vertically align title and image */
+    margin-bottom: 20px; /* Space below the title/image block */
+    border-bottom: 2px dotted #add8e6; /* Light blue dotted line below */
+    padding-bottom: 15px; /* Space above the dotted line */
+}
+
+.recipe-image {
+    margin-bottom: 0; /* Remove margin */
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.recipe-image svg {
+    max-width: 120px; /* Even smaller max-width for the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
-
-.section {
-    margin-bottom: 30px;
 }
 
 /* Ingredients & Preparation Layout */
@@ -118,6 +136,40 @@ h3 {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive grid */
     gap: 15px; /* Spacing between items */
     text-align: center;
+    margin-bottom: 20px; /* Add margin below pictograms */
+}
+
+/* Text Lists for Ingredients and Preparation */
+.ingredient-list, .preparation-list {
+    margin-top: 20px; /* Add space above text lists */
+    padding: 15px;
+    background-color: #fff8dc; /* Cornsilk background for lists */
+    border-radius: 8px;
+    border: 1px dashed #f4a460; /* Sandy brown dashed border */
+}
+
+.ingredient-list h3, .preparation-list h3 {
+    margin-top: 0;
+    font-size: 1.3em; /* Slightly smaller heading for lists */
+    color: #8b4513; /* Saddle brown color */
+    border-bottom: 1px solid #d2b48c; /* Tan underline */
+}
+
+.ingredient-list ul, .preparation-list ol {
+    list-style-position: inside;
+    padding-left: 10px; /* Adjust padding */
+    margin: 0;
+    font-size: 0.95em; /* Adjust font size */
+    line-height: 1.6;
+    color: #555;
+}
+
+.ingredient-list ul li::marker, .preparation-list ol li::marker {
+    font-weight: bold;
+}
+
+.preparation-list ol {
+    list-style-type: decimal; /* Ensure numbered list */
 }
 
 /* Item and Step Styling */
@@ -152,8 +204,8 @@ h3 {
 }
 
 .icon {
-    width: 60px; /* Reduced icon size */
-    height: 60px; /* Reduced icon size */
+    width: 90px; /* Reduced icon size */
+    height: 90px; /* Reduced icon size */
     display: block;
     margin: 0 auto 5px auto; /* Center icon and add bottom margin */
 }
@@ -249,6 +301,26 @@ h3 {
         font-size: 0.8em;
         top: 3px;
         left: 3px;
+    }
+
+    .step {
+        padding-top: 30px;
+    }
+
+    /* Stack title and image on small screens */
+    .title-image-container {
+        flex-direction: column; /* Stack vertically */
+        align-items: center; /* Center items when stacked */
+    }
+
+    h2 {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 10px; /* Add space below title */
+        text-align: center; /* Center title on mobile */
+    }
+
+    .recipe-image svg {
+        max-width: 150px; /* Slightly larger image on mobile when stacked */
     }
 
     .step {
